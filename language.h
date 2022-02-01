@@ -17,11 +17,6 @@ _Language.prototype.localization = function(locapath)
 	if typeof(config) != "file" then return "Could not read '" + locapath + "' eval(file)";
 	if config.get_content.len < 0 then return false;
 
-	//Getting the localizators - example of a peace of file format.
-	//spanish;french;english;myowninvented
-	//juego;jeu;game;engio
-	//krita;kri;krite;fwer
-
 	data = config.get_content.split(char(10));
 	localizators = data[0].split(";");
 	if localizators.len < 1 then return false;
@@ -29,21 +24,18 @@ _Language.prototype.localization = function(locapath)
 	dict = [];
 
 	for i in range(1,data.len -1)
-		//get the variant string - 'juego;jeu;game;engio'
+
 		variant_string = data[i].split(";");
 		if data[i].len < 1 then return false;
 
-		//if the variant string contain only the tag
-		//then add undefined value for each localizators
 		if data[i].len == 1 then
 			for e in range(0,localizators.len -1)
 				variant_string.push("undefined");
 			end for
 		end if
 
-		//assemble the dictionnary
 		map = {"word":variant_string[0],"dict":[]};
-
+		
 		for e in range(0,variant_string.len -1)
 				if e > localizators.len then return "Cannot parse -> '" + dictpath + "' eval(file)";
 				map.dict.push({localizators[e]:variant_string[e]});

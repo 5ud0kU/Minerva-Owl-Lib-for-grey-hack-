@@ -108,10 +108,6 @@ _Math.prototype.decimalToBinary = function(x,y)
 		Math.reserved_binary_string = String.reverseString(binary).to_int;
 		return Math.reserved_binary_string;
 	else
-		//Here we put a special return cause its like that.No kidding, apparently
-		//is due because its a recursive function.As the modo on discord say.Permit
-		//me to doubt of it as decimal to hex function dont use it and return normaly.
-		//Dont remove that return or it will bug.
 		return Math.decimalToBinary(sum,binary);
 	end if
 end function

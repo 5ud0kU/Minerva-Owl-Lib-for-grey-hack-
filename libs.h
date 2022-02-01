@@ -30,9 +30,6 @@ _Libs.prototype.load_dependencies = function()
       end for
     end if
   end if
- //I think we can add kind of rules set for if the template comes to change by
- //lower entities.
 end function
 
 Libs = new Class("Libs",_Libs.prototype).prototype;
-//print(Libs);

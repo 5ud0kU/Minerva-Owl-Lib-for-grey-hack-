@@ -12,7 +12,6 @@
 
 _Key = Class("template",{});
 
-_Key = {};
 _Key.prototype.Backspace = {"KeyCode":8,"name":"Backspace"};
 _Key.prototype.Tab = {"KeyCode":9,"name":"Tab"};
 _Key.prototype.Enter = {"KeyCode":13,"name":"Enter"};
@@ -112,7 +111,7 @@ _Key.prototype.awaitKey = function(curt)
 	return x;
 end function
 
-_Key.prototype.Compare = function(key, x)
+_Key.prototype.compare = function(key, x)
 	if Key[key].name == x then return true;
 	if Key[key].name != x then return false;
 end function

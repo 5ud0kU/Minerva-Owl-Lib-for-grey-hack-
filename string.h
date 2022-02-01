@@ -88,7 +88,3 @@ _String.prototype.replace = function(x,y,z)
 end function
 
 String = new Class("String",_String.prototype).prototype;
-///String = new String.prototype
-
-//x = "1234";
-//print(String.reverseString(x));
