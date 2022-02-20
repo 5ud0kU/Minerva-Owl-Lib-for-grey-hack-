@@ -62,6 +62,36 @@ _Math.prototype.decimalToHex = function(x,z)
 	return Math.reserved_hex_string;
 end function
 
+_Math.prototype.hexToDecimal = function(x)
+	if typeof(x) != "string" then return "error : hex to decimal -> x string expected";
+	if x.len < 1 then return "error : hex to decimal -> x string expected";
+	if x[0] != "#" then return "error : hex to decimal -> x is not a hex.";
+	x = x.upper;
+
+	bits = [];
+	for i in range(0,x.len -1)
+		if i != 0 then bits.push(x[i]);
+	end for
+
+	for i in range(0,bits.len -1)
+		if typeof(bits[i].to_int) != "number" then
+			if bits[i] == "A" then bits[i] = 10 * (16 ^ i);
+			if bits[i] == "B" then bits[i] = 11 * (16 ^ i);
+			if bits[i] == "C" then bits[i] = 12 * (16 ^ i);
+			if bits[i] == "D" then bits[i] = 13 * (16 ^ i);
+			if bits[i] == "E" then bits[i] = 14 * (16 ^ i);
+			if bits[i] == "F" then bits[i] = 15 * (16 ^ i);
+		else
+			bits[i] = bits[i].to_int * (16 ^ i);
+		end if
+	end for
+	decimal = 0;
+	for i in range(0,bits.len -1)
+		decimal = decimal + bits[i];
+	end for
+	return str(decimal);
+end function
+
 _Math.prototype.percent = function(x,y)
 	if typeof(x) != "number" then return "error : pourcent -> x expected int.";
 	if typeof(x) != "number" then return "error : pourcent -> y expected int.";
