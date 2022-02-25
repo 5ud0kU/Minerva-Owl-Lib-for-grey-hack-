@@ -37,6 +37,8 @@ _FileSystem.prototype.stream = function(x,y)
 end function
 
 _FileSystem.prototype.write = function(x)
+	if typeof(x) != "string" then return "error : write -> x expected a string.";
+	if x.len < 1 then return "error : write -> x string is empty.";
 	if FileSystem.reserved_stream.write == true then
 		if typeof(FileSystem.reserved_stream.file) != "file" then return "error : write -> file not exist";
 		FileSystem.reserved_stream.file.set_content(x);

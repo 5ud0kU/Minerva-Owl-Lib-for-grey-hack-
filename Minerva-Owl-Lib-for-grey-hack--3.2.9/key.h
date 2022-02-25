@@ -107,11 +107,17 @@ _Key.prototype.CloseBracket = {"KeyCode":221,"name":"CloseBracket"};
 _Key.prototype.SingleQuote = {"KeyCode":222,"name":"SingleQuote"};
 
 _Key.prototype.awaitKey = function(curt)
+	if typeof(curt) != "string" then return "error : curt expected a string.";
 	x = user_input(curt,false,true);
 	return x;
 end function
 
 _Key.prototype.compare = function(key, x)
+	if typeof(x) != "string" then return "error : compare -> x expected a string.";
+	if x.len < 0 then return "error : compare -> x string is empty.";
+	if typeof(key) != "string" then return "error : compare -> key expected a string.";
+	if key.len < 0 then return "error : compare -> key string is empty.";
+
 	if Key[key].name == x then return true;
 	if Key[key].name != x then return false;
 end function

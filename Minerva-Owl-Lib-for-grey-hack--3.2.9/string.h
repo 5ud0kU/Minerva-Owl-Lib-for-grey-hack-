@@ -119,7 +119,7 @@ end function
 
 _String.prototype.isLower = function(x,y)
 	if typeof(x) != "string" then return "error : islower -> x expected a string.";
-	if typeof(y) != "number" then return "error : islower -> y expected a string.";
+	if typeof(y) != "number" then return "error : islower -> y expected a number.";
 	if x.len < 0 then return "error : the string is empty and by nature doesnt have character.";
 	if y < 0 or y > x.len then return "error : islower -> y is out range.";
 
@@ -163,10 +163,10 @@ _String.prototype.isDigit = function(x,y)
 end function
 
 _String.prototype.isSpace = function(x,y)
-	if typeof(x) != "string" then return "error : isspace -> x expected a string.";
-	if typeof(y) != "number" then return "error : isspace -> y expected a number.";
+	if typeof(x) != "string" then return "error : is space -> x expected a string.";
+	if typeof(y) != "number" then return "error : is space -> y expected a number.";
 	if x.len < 0 then return "error : the string is empty and by nature doesnt have character.";
-	if y < 0 or y > x.len then return "error : isspace -> y is out of range.";
+	if y < 0 or y > x.len then return "error : is space -> y is out of range.";
 
 	c_charset = 32;
 	ch = code(x[y]);

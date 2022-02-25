@@ -15,6 +15,7 @@ _Libs.prototype.metaxploit = "";
 _Libs.prototype.crypto = "";
 _Libs.prototype.aptclient = "";
 _Libs.prototype.load_dependencies = function()
+  if typeof(get_shell.host_computer.File("/lib")) != "file" then return "error : load_dependencies -> could not access /lib .";
   libFolder = get_shell.host_computer.File("/lib");
   if typeof(libFolder) == "file" then
     files = libFolder.get_files;
@@ -30,6 +31,7 @@ _Libs.prototype.load_dependencies = function()
       end for
     end if
   end if
+  return 1;
 end function
 
 Libs = new Class("Libs",_Libs.prototype).prototype;

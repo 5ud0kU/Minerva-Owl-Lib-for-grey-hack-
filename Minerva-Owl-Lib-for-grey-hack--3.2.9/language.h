@@ -13,6 +13,8 @@
 _Language = Class("template",{});
 
 _Language.prototype.localization = function(locapath)
+	if typeof(locapath) != "string" then return "error : localization -> locapath expected a string.";
+	if locapath.len < 1 then return "error : localization -> locapath string is empty.";
 	config = get_shell.host_computer.File(locapath);
 	if typeof(config) != "file" then return "Could not read '" + locapath + "' eval(file)";
 	if config.get_content.len < 0 then return false;
@@ -48,6 +50,9 @@ _Language.prototype.localization = function(locapath)
 end function
 
 _Language.prototype.trad = function(wor,lan,dic)
+	if typeof(wor) != "string" then return "error : trad -> wor expected a string.";
+	if typeof(lan) != "string" then return "error : trad -> lan expected a string.";
+	if typeof(dic) != "map" then return "error : trad -> dic expected a map.";
 	for i in range(0,dic.len -1)
 		if dic[i].word == wor then
 			for e in range(0,dic[i].dict.len -1)

@@ -13,6 +13,8 @@
 _Encryption = Class("template",{});
 
 _Encryption.prototype.rot13 = function(x)
+	if typeof(x) != "string" then return "error : rot13 -> x expected a string.";
+	if x.len < 0 then return "error : rot13 -> x string is empty.";
 	chars = String.stringToList(x);
 	for i in range(0,chars.len -1)
 		if code(chars[i]) >= 65 and code(chars[i]) <= 90 then
@@ -25,6 +27,9 @@ _Encryption.prototype.rot13 = function(x)
 end function
 
 _Encryption.prototype.caesar = function(x,y)
+	if typeof(x) != "string" then return "error : caesar -> x expected a string.";
+	if typeof(y) != "number" then return "error : caesar -> y expected a number.";
+	if x.len < 0 then return "error : caesar -> x string is empty.";
 	chars = String.stringToList(x);
 	for i in range(0,chars.len -1)
 		if code(chars[i]) >= 65 and code(chars[i]) <= 90 then
@@ -37,6 +42,8 @@ _Encryption.prototype.caesar = function(x,y)
 end function
 
 _Encryption.prototype.byteSwap = function(x)
+	if typeof(x) != "string" then return "error : byteSwap -> x expected a string.";
+	if x.len < 0 then return "error : byteSwap -> x string is empty.";
 	byteString = String.stringToDecimal(x);
 	bytes = [];
 

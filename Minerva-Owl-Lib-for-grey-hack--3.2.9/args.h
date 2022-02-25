@@ -34,6 +34,10 @@ _Args.prototype.dictionnary = function(dictpath)
 end function
 
 _Args.prototype.eval = function(cmap,dictpath)
+  if typeof(cmap) != "map" then return "error : eval -> cmap expected a map.";
+  if typeof(dictpath) != "string" then return "error eval -> dictpath expected a string.";
+  if cmap.len < 1 then return "error : eval -> cmap is empty.";
+  if dictpath.len < 1 then return "error : eval -> dictpath is empty."
   isValid = false;
   errors = [];
   for i in range(0,cmap.len -1)
@@ -61,6 +65,10 @@ _Args.prototype.eval = function(cmap,dictpath)
 end function
 
 _Args.prototype.parse = function(command,dictpath)
+  if typeof(command) != "string" then return "error : parse -> command expected string.";
+  if typeof(dictpath) != "string" then return "error : parse -> dictpath expected string.";
+  if command.len < 1 then return "error : parse -> command is empty.";
+  if dictpath.len < 1 then return "error : parse -> dictpath is empty.";
   cmap = [];
 
   //building the received line into a index map.

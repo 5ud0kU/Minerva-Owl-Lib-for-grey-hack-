@@ -37,6 +37,8 @@ end function
 
 _Math.prototype.decimalToHex = function(x,z)
 	if typeof(x) != "number" then return "error : decimal to hex -> x not number.";
+	if typeof(z) != "string" then return "error : decimal to hex -> z not string.";
+	if z.len > 0 then return "error : decimal to hex -> z expected empty string.";
 
 	remainder = x% 16;
 	sum = x / 16;
@@ -64,7 +66,7 @@ end function
 
 _Math.prototype.hexToDecimal = function(x)
 	if typeof(x) != "string" then return "error : hex to decimal -> x string expected";
-	if x.len < 1 then return "error : hex to decimal -> x string expected";
+	if x.len < 1 then return "error : hex to decimal -> x string expected.";
 	if x[0] != "#" then return "error : hex to decimal -> x is not a hex.";
 	x = x.upper;
 
